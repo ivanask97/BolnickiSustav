@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="731.0" prefWidth="908.0" style="-fx-background-color: #e6ffff;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdministratorCtr">
+   <children>
+      <VBox layoutX="-1.0" layoutY="-2.0" prefHeight="500.0" prefWidth="241.0" style="-fx-background-image: url(assets/pozadina.jpg);" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="270.0" prefWidth="224.0">
+               <children>
+                  <ImageView fitHeight="201.0" fitWidth="224.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true"><image>
+                     <Image url="@../assets/logo.png" />
+                  </image></ImageView>
+                  <Label fx:id="hello" alignment="CENTER" layoutX="4.0" layoutY="223.0" prefHeight="38.0" prefWidth="232.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Button fx:id="btnKorisnici" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="224.0" text="Korisnici">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></Button>
+            <Button fx:id="btnOdjeli" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="224.0" text="Odjeli">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></Button>
+            <Button fx:id="btnOperacije" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="224.0" text="Operacijske sale">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></Button>
+            <Button fx:id="btnLijekovi" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="224.0" text="Lijekovi">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></Button>
+            <Button fx:id="btnPromjeni" layoutX="15.0" layoutY="415.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="224.0" text="Promijena lozinka">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnOdjava" mnemonicParsing="false" onAction="#odjava" prefHeight="45.0" prefWidth="224.0" text="Odjava">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </VBox>
+      <GridPane fx:id="gridKorisnici" layoutX="247.0" layoutY="392.0" prefHeight="311.0" prefWidth="652.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="392.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="263.0" minHeight="10.0" prefHeight="56.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="273.0" minHeight="10.0" prefHeight="255.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TableView fx:id="tblKorisnici" prefHeight="288.0" prefWidth="559.0" GridPane.rowIndex="1">
+              <columns>
+                <TableColumn fx:id="tblClName" onEditCommit="#editUserFirstName" prefWidth="109.0" text="Ime" />
+                  <TableColumn fx:id="tblClLastName" minWidth="4.0" onEditCommit="#editUserLastName" prefWidth="150.0" text="Prezime" />
+                  <TableColumn fx:id="tblClEmail" prefWidth="153.0" text="Email" />
+                  <TableColumn fx:id="tblClUserName" prefWidth="136.0" text="Korisničko ime" />
+                  <TableColumn fx:id="tblClUloga" prefWidth="103.0" text="Uloga" />
+
+
+              </columns>
+            </TableView>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btnIzbrisiKor" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#deleteUser" text="Izbriši korisnika" />
+                  <Button fx:id="btnUredi" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#urediUlogu" text="Uredi ulogu">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Label fx:id="error" prefHeight="17.0" prefWidth="314.0" text="Ne možete izbrisati trenutno prijavljenog korisnika" textFill="#ee0303" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblNeoznacenKor" text="Niste odabrali korisnika!" textFill="#f20606" visible="false">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+      <Pane fx:id="pnlKorisnici" layoutX="250.0" layoutY="14.0" prefHeight="382.0" prefWidth="662.0" visible="false">
+         <children>
+             <GridPane fx:id="tblDodajKor" layoutY="88.0" prefHeight="293.0" prefWidth="652.0">
+                 <columnConstraints>
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="278.0" minWidth="10.0" prefWidth="167.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="407.0" minWidth="10.0" prefWidth="398.0" />
+                 </columnConstraints>
+                 <rowConstraints>
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                 </rowConstraints>
+                 <children>
+                     <Label text="Ime:" />
+                     <Label layoutX="10.0" layoutY="19.0" text="Prezime:" GridPane.rowIndex="1" />
+                     <Label layoutX="10.0" layoutY="54.0" text="Email:" GridPane.rowIndex="2" />
+                     <Label layoutX="10.0" layoutY="89.0" text="Korisničko ime:" GridPane.rowIndex="3" />
+                     <Label layoutX="10.0" layoutY="19.0" text="Lozinka:" GridPane.rowIndex="4" />
+                     <Label layoutX="10.0" layoutY="159.0" text="Odaberite ulogu:" GridPane.rowIndex="5" />
+                     <Label fx:id="lblSpec" layoutX="10.0" layoutY="19.0" text="Specijalizacija:" GridPane.rowIndex="7" />
+                     <Label fx:id="lblOdjel" layoutX="10.0" layoutY="19.0" text="Odjel:" GridPane.rowIndex="6" />
+                     <TextField fx:id="txtIme" GridPane.columnIndex="1" />
+                     <TextField fx:id="txtPrezime" layoutX="293.0" layoutY="15.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     <TextField fx:id="txtKorisIme" layoutX="293.0" layoutY="15.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     <TextField fx:id="txtEmail" layoutX="293.0" layoutY="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <TextField fx:id="txtLozinka" layoutX="293.0" layoutY="120.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     <ChoiceBox fx:id="bxUloga" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+                     <ChoiceBox fx:id="bxOdjel" layoutX="293.0" layoutY="190.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                     <ChoiceBox fx:id="bxSpec" layoutX="293.0" layoutY="190.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+                     <Button fx:id="btnDodajKor" mnemonicParsing="false" onAction="#addUserToDatabase" text="Dodaj korisnika" textAlignment="JUSTIFY" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                         <GridPane.margin>
+                             <Insets />
+                         </GridPane.margin>
+                     </Button>
+                  <Label fx:id="errorDod" text="Molimo popunite sva polja za unos !" textFill="#f81c03" visible="false" GridPane.rowIndex="8">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label fx:id="lblDocPacijenti" text="korisnik ima pacijente, ne mogu obrisat!" textFill="#f50303" visible="false" GridPane.rowIndex="8" />
+                 </children>
+             </GridPane>
+            <Label fx:id="lblNaslov" layoutX="7.0" layoutY="61.0" prefHeight="31.0" prefWidth="559.0" text="Dodaj novog korisnika:">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="5.0" prefHeight="43.0" prefWidth="652.0" text="Administracijsko sučelje za korisnike">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Pane>
+      <Pane fx:id="pnlLijekovi" layoutX="250.0" layoutY="24.0" prefHeight="382.0" prefWidth="628.0" visible="false">
+         <children>
+            <GridPane fx:id="tblDodajLijek" layoutY="88.0" prefHeight="293.0" prefWidth="614.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="278.0" minWidth="10.0" prefWidth="167.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="407.0" minWidth="10.0" prefWidth="398.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Naziv lijeka:" />
+                  <Label layoutX="10.0" layoutY="19.0" text="Naziv proizvođača:" GridPane.rowIndex="1" />
+                  <Label layoutX="10.0" layoutY="54.0" text="Količina lijeka:" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtNazivLijeka" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtProizvodjac" layoutX="293.0" layoutY="15.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtKolicina" layoutX="293.0" layoutY="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="btnDodajLijek" mnemonicParsing="false" onAction="#addLijekToDatabase" text="Dodaj lijek" textAlignment="JUSTIFY" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Button>
+                  <Label text="Cijena:" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtCijena" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="errorLijek" prefHeight="17.0" prefWidth="198.0" text="Molimo popunite sva polja za unos!" textFill="#f20303" visible="false" GridPane.rowIndex="4" />
+               </children>
+            </GridPane>
+            <Label fx:id="lblNaslovLijek" layoutX="7.0" layoutY="49.0" prefHeight="43.0" prefWidth="607.0" text="Dodaj novi lijek:">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="6.0" layoutY="6.0" prefHeight="43.0" prefWidth="550.0" text="Administracijsko sučelje za lijekove">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <GridPane fx:id="gridLijekovi" layoutX="257.0" layoutY="400.0" prefHeight="302.0" prefWidth="628.0" visible="false">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="263.0" minHeight="10.0" prefHeight="43.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="273.0" minHeight="10.0" prefHeight="242.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <TableView fx:id="tblLijekovi" prefHeight="288.0" prefWidth="559.0" GridPane.rowIndex="1">
+               <columns>
+                  <TableColumn fx:id="tblClNazivLijek" onEditCommit="#editNazivLijeka" prefWidth="150.0" text="Naziv" />
+                  <TableColumn fx:id="tblClNazivProi" prefWidth="150.0" text="Proizvođač" />
+                  <TableColumn fx:id="tblClKolicina" onEditCommit="#editKolicina" prefWidth="162.0" text="Količina" />
+                  <TableColumn fx:id="tblClCijena" onEditCommit="#editCijena" prefWidth="165.0" text="Cijena" />
+
+               </columns>
+            </TableView>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btnIzbrisiLijek" mnemonicParsing="false" onAction="#deleteLijek" prefHeight="25.0" prefWidth="102.0" text="Izbrisi lijek" />
+                  <Label fx:id="errorLj" prefHeight="17.0" prefWidth="421.0" text="Ne može obrisati lijek se vec koristi!" textFill="#f20707" visible="false">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </GridPane>
+      <Pane fx:id="pnlOdjeli" layoutX="260.0" layoutY="-1.0" prefHeight="346.0" prefWidth="637.0" visible="false">
+         <children>
+            <GridPane fx:id="tblDodajOdjel" layoutY="99.0" prefHeight="215.0" prefWidth="628.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="278.0" minWidth="10.0" prefWidth="167.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="407.0" minWidth="10.0" prefWidth="398.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Naziv odjela:" />
+                  <TextField fx:id="txtNaziv" prefHeight="14.0" prefWidth="407.0" GridPane.columnIndex="1" />
+                  <Button fx:id="btnDodajOdjel" mnemonicParsing="false" onAction="#addOdjelToDatabase" text="Dodaj odjel" textAlignment="JUSTIFY" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Button>
+                  <Label layoutX="10.0" layoutY="38.0" text="Broj kreveta" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtKrevet" layoutX="231.0" layoutY="34.0" prefHeight="14.0" prefWidth="407.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="errorLbl" prefHeight="17.0" prefWidth="220.0" text="Molimo vas da popunite sva mijesta!" textFill="#f20909" visible="false" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="successLbl" layoutX="10.0" layoutY="181.0" prefHeight="17.0" prefWidth="213.0" text="Uspjesno ste unijeli podatke!" textFill="#5bee06" visible="false" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+            <Label fx:id="lblNaslovLijek1" layoutX="7.0" layoutY="49.0" prefHeight="43.0" prefWidth="607.0" text="Dodaj novi odjel:">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="6.0" layoutY="6.0" prefHeight="43.0" prefWidth="550.0" text="Administracijsko sučelje za odjele">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <GridPane fx:id="gridOdjeli" layoutX="267.0" layoutY="338.0" prefHeight="374.0" prefWidth="614.0" visible="false">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="263.0" minHeight="10.0" prefHeight="51.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="323.0" minHeight="10.0" prefHeight="323.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <TableView fx:id="tblOdjeli" prefHeight="288.0" prefWidth="559.0" GridPane.rowIndex="1">
+               <columns>
+                  <TableColumn fx:id="tblClNaziv" onEditCommit="#editNaziv" prefWidth="306.0" text="Naziv odjela" />
+                  <TableColumn fx:id="tblClBroj" onEditCommit="#editBroj" prefWidth="307.0" text="Broj kreveta" />
+               </columns>
+            </TableView>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btnIzbrisiOdjel" mnemonicParsing="false" onAction="#deleteOdjel" prefHeight="25.0" prefWidth="102.0" text="Izbrisi odjel" />
+                  <Label fx:id="errorOdjel" prefHeight="17.0" prefWidth="262.0" text="Ne mogu obrisati odjel se koristi!" textFill="#eb0505" visible="false" />
+                  <Label fx:id="errorOdjelNe" text="odaberite odjel koji zelte obrisati!" textFill="#ee0606" visible="false">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </GridPane>
+      <GridPane fx:id="gridOperacija" layoutX="277.0" layoutY="309.0" prefHeight="413.0" prefWidth="614.0" visible="false">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="263.0" minHeight="10.0" prefHeight="62.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="353.0" minHeight="10.0" prefHeight="353.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <TableView fx:id="tblSale" prefHeight="288.0" prefWidth="559.0" GridPane.rowIndex="1">
+               <columns>
+                  <TableColumn fx:id="tblClNazivSale" onEditCommit="#editNazivSale" prefWidth="572.0" text="Naziv" />
+               </columns>
+            </TableView>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btnIzbrisiSalu" mnemonicParsing="false" onAction="#deleteSala" prefHeight="25.0" prefWidth="187.0" text="Izbrisi operacijsku salu" />
+                  <Label fx:id="errorSa" prefHeight="17.0" prefWidth="214.0" text="Ne mogu obrisati sala se koristi" textFill="#ee0606" visible="false" />
+                  <Label fx:id="errorSalaNe" prefHeight="17.0" prefWidth="225.0" text="Odaberite salu koju želite izbrisati!" textFill="#f20808" visible="false">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </GridPane>
+      <Pane fx:id="pnlOperacije" layoutX="236.0" layoutY="8.0" prefHeight="311.0" prefWidth="662.0" visible="false">
+         <children>
+            <GridPane fx:id="tblDodajOdjel1" layoutY="99.0" prefHeight="215.0" prefWidth="628.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="278.0" minWidth="10.0" prefWidth="167.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="407.0" minWidth="10.0" prefWidth="398.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Naziv operacijske sale:" />
+                  <TextField fx:id="txtNazivSale" prefHeight="14.0" prefWidth="407.0" GridPane.columnIndex="1" />
+                  <Button fx:id="btnDodajSalu" mnemonicParsing="false" onAction="#addSalaToDatabase" text="Dodaj salu" textAlignment="JUSTIFY" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Button>
+                  <Label fx:id="errorSala" text="Molimo popunite sva polja za unos!" textFill="#f20606" visible="false" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <Label fx:id="lblNaslovOperacija" layoutX="7.0" layoutY="49.0" prefHeight="43.0" prefWidth="607.0" text="Dodaj novu operacijsku salu:">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="6.0" layoutY="6.0" prefHeight="43.0" prefWidth="550.0" text="Administracijsko sučelje za operacijske sale">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="pnlPass" layoutX="250.0" layoutY="8.0" prefHeight="317.0" prefWidth="656.0" visible="false">
+         <children>
+            <Label layoutX="14.0" layoutY="20.0" prefHeight="30.0" prefWidth="232.0" text="Promijeni lozinku:">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="70.0" prefHeight="45.0" prefWidth="102.0" text="Nova lozinka:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtNovaLz" layoutX="158.0" layoutY="80.0" prefHeight="25.0" prefWidth="314.0" />
+            <Button fx:id="btnPromijeniLz" layoutX="420.0" layoutY="159.0" mnemonicParsing="false" onAction="#promjeniLozinku" text="Promijeni lozinku" />
+            <Label fx:id="lblUspjehPass" layoutX="88.0" layoutY="241.0" prefHeight="17.0" prefWidth="213.0" text="Lozinka je uspjesno promijenjena!" textFill="#1efc06" visible="false">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnZatvPass" layoutX="507.0" layoutY="23.0" mnemonicParsing="false" onAction="#zatvoriPass" text="Zatvori" />
+            <Label fx:id="lblNeuspjehPass" layoutX="63.0" layoutY="209.0" text="Molimo unesite novu lozinku!" textFill="#f80808" visible="false" />
+         </children>
+      </Pane>
+      <Pane fx:id="pnlUloga" layoutX="277.0" layoutY="2.0" prefHeight="390.0" prefWidth="628.0" visible="false">
+         <children>
+            <Label fx:id="lblDrS" layoutX="41.0" layoutY="24.0" prefHeight="17.0" prefWidth="150.0" text="Uredi doktora:">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Label>
+            <Button fx:id="btnUgasi" layoutX="561.0" layoutY="26.0" mnemonicParsing="false" onAction="#zatvori" text="Zatvori" />
+            <GridPane layoutX="8.0" layoutY="99.0" prefHeight="242.0" prefWidth="607.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btnPotvrdi" mnemonicParsing="false" onAction="#potvrdaUloge" text="Potvrdi" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Uredi odjel:" />
+                  <Label fx:id="lblSp" text="Uredi specijalizaciju:" GridPane.rowIndex="1" />
+                  <ChoiceBox fx:id="bxUl" prefWidth="150.0" GridPane.columnIndex="1" />
+                  <ChoiceBox fx:id="bxSp" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="lblPogreska" text="Molimo popunite sva polja!" textFill="#f80909" visible="false" GridPane.rowIndex="2" />
+                  <Label fx:id="lblIspravka" text="Uspjesno ste ažurirali podatke!" textFill="#1bf502" visible="false" GridPane.rowIndex="2" />
+                  <Label fx:id="lblDocImaPac" prefHeight="33.0" prefWidth="299.0" text="Ne možete mijenjati odjel ako doktor ima pacijente!" textFill="#eb0303" visible="false" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

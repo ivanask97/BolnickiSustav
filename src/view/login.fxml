@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="600.0" style="-fx-background-image: url(assets/pozadina.jpg);" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Login">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="222.0" />
+    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="378.0" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints maxHeight="138.0" minHeight="10.0" prefHeight="131.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="137.0" minHeight="3.0" prefHeight="41.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="165.0" minHeight="0.0" prefHeight="44.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="201.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Button fx:id="loginBtn" maxWidth="90.0" mnemonicParsing="false" onAction="#login" text="Login" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin></Button>
+      <Label alignment="CENTER" maxHeight="50.0" maxWidth="500.0" text="Prijava na sustav!" textAlignment="CENTER" textFill="#111111" GridPane.columnIndex="1">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font></Label>
+      <Label alignment="CENTER" text="Unesite korisničko ime:" textAlignment="CENTER" textFill="#111111" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label text="Unesite lozinku:" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="userNameTxt" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+      </TextField>
+      <ImageView fitHeight="126.0" fitWidth="223.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <image>
+            <Image url="@../assets/logo.png" />
+         </image></ImageView>
+      <Label fx:id="greskaLbl" text="Molimo unesite vaše korisničke podatke!!!" textFill="#ed0505" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="greska1Lbl" prefHeight="20.0" prefWidth="371.0" text="Molimo vas unesite valjane korisničke podatke" textFill="#f50000" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="passwordTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+   </children>
+</GridPane>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="731.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FarmaceutCtr">
+    <children>
+        <VBox prefHeight="500.0" prefWidth="241.0">
+            <children>
+                <Pane prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <ImageView fitHeight="201.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true"><image>
+                            <Image url="@../assets/logo.png" />
+                        </image></ImageView>
+                        <Label fx:id="lblDobrodosliFr" alignment="CENTER" layoutX="4.0" layoutY="223.0" prefHeight="38.0" prefWidth="232.0" />
+                    </children>
+                </Pane>
+                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="224.0" text="Pacijenti">
+                    <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                    </VBox.margin></Button>
+                <Button maxWidth="224.0" mnemonicParsing="false" prefHeight="45.0" text="Termini operacija">
+                    <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                    </VBox.margin></Button>
+                <Button maxWidth="224.0" mnemonicParsing="false" prefHeight="45.0" text="Termini pregleda">
+                    <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                    </VBox.margin></Button>
+                <Button maxWidth="224.0" mnemonicParsing="false" prefHeight="45.0" text="Promjena korisničkih podataka">
+                    <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                    </VBox.margin></Button>
+                <Button maxWidth="224.0" mnemonicParsing="false" onAction="#odjavaFr" prefHeight="45.0" text="Odjava">
+                    <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                    </VBox.margin></Button>
+            </children></VBox>
+        <Pane layoutX="241.0" layoutY="14.0" prefHeight="707.0" prefWidth="657.0" />
+    </children>
+</AnchorPane>
